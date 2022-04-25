@@ -12,6 +12,7 @@ public class Google {
     @FindBy(xpath = "//input[contains(@data-ved='0ahUKEwjThofTx6j3AhWEIbkGHdJKCFAQ4dUDCA4')]")
     WebElement btnBuscar;
 
+
     public Google (WebDriver webDriver){
         PageFactory.initElements(webDriver,this);
     }
