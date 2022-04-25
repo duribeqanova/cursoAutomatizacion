@@ -16,7 +16,7 @@ public class Google {
         PageFactory.initElements(webDriver,this);
     }
 
-    public void ingrsarBusqueda (String busqueda){
+    public void ingresarBusqueda (String busqueda){
         inputBuscar.sendKeys(busqueda);
     }
 
