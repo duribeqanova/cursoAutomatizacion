@@ -1,16 +1,19 @@
 package page;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+
 public class Google {
-    @FindBy(className ="gLFyf gsfi")
+    @FindBy(xpath ="//input[@title = 'Buscar']")
     WebElement inputBuscar;
 
-    @FindBy(xpath = "//input[contains(@data-ved='0ahUKEwjThofTx6j3AhWEIbkGHdJKCFAQ4dUDCA4')]")
+    @FindBy(xpath ="//input[@value= 'Buscar con Google']")
     WebElement btnBuscar;
+
 
 
     public Google (WebDriver webDriver){
