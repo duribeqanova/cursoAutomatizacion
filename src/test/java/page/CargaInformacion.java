@@ -88,4 +88,21 @@ public class CargaInformacion {
         Select select = new Select(campoLista);
         select.selectByVisibleText(valor);
     }
+
+    public void  seleccionMultiple(int indicador){
+        switch (indicador) {
+            case 1:
+                chckbxSeleccionMultiple1.click();
+                break;
+            case 2:
+                chckbxSeleccionMultiple2.click();
+                break;
+            case 3:
+                chckbxSeleccionMultiple3.click();
+                break;
+            default:
+                System.out.println("valor no procesable");
+        }
+    }
+
 }

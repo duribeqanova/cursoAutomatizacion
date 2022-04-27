@@ -23,5 +23,6 @@ public class Logeo {
         cargaInformacion.recuperarTitulo();
         cargaInformacion.rellenarFecha("01/01/2020");
         cargaInformacion.rellenarLista("valor 2");
+        cargaInformacion.seleccionMultiple(2);
     }
 }
