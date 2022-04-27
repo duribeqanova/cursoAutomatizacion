@@ -21,8 +21,13 @@ public class Logeo {
         login.ingresarClave(clave);
         login.clickBtnIngresar();
         cargaInformacion.recuperarTitulo();
+        cargaInformacion.rellenarCampoTexto("Hola");
+        cargaInformacion.rellenarCampoMail("duribe@qanova.cl");
+        cargaInformacion.rellenarCampoAreaTexto("texto random");
         cargaInformacion.rellenarFecha("01/01/2020");
         cargaInformacion.rellenarLista("valor 2");
         cargaInformacion.seleccionMultiple("1,2,3");
+        cargaInformacion.seleccionRadioButton(2);
+        cargaInformacion.clickBtnEnviar();
     }
 }

@@ -50,7 +50,7 @@ public class CargaInformacion {
     @FindBy(id = "imObjectForm_1_8_2")
      private WebElement rdbtnCombo3;
 
-    @FindBy(id = "imObjectForm_1_Submit")
+    @FindBy(xpath = "//*[@id=\"imObjectForm_1_submit\"]")
         private WebElement btnEnviar;
 
     @FindBy(xpath = "//*[@id=\"imObjectForm_1_buttonswrap\"]/input[2]")
@@ -89,22 +89,6 @@ public class CargaInformacion {
         select.selectByVisibleText(valor);
     }
 
-    public void  seleccionMultiple(int indicador){
-        switch (indicador) {
-            case 1:
-                chckbxSeleccionMultiple1.click();
-                break;
-            case 2:
-                chckbxSeleccionMultiple2.click();
-                break;
-            case 3:
-                chckbxSeleccionMultiple3.click();
-                break;
-            default:
-                System.out.println("valor no procesable");
-        }
-    }
-
     public void  seleccionMultiple(String indicador) {
         String[] indicadores = indicador.split(",");
         for (String nro : indicadores) {
@@ -123,5 +107,29 @@ public class CargaInformacion {
                     System.out.println("valor no procesable");
             }
         }
+    }
+
+    public void  seleccionRadioButton(int indicador){
+        switch (indicador) {
+            case 1:
+                rdbtnCombo1.click();
+                break;
+            case 2:
+                rdbtnCombo2.click();
+                break;
+            case 3:
+                rdbtnCombo3.click();
+                break;
+            default:
+                System.out.println("valor no procesable");
+        }
+    }
+
+    public void clickBtnEnviar(){
+        btnEnviar.click();
+    }
+
+    public void clickBtnReset(){
+        btnReset.click();
     }
 }
