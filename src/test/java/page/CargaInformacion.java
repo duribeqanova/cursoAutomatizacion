@@ -105,4 +105,23 @@ public class CargaInformacion {
         }
     }
 
+    public void  seleccionMultiple(String indicador) {
+        String[] indicadores = indicador.split(",");
+        for (String nro : indicadores) {
+            int numero = Integer.parseInt(nro);
+            switch (numero) {
+                case 1:
+                    chckbxSeleccionMultiple1.click();
+                    break;
+                case 2:
+                    chckbxSeleccionMultiple2.click();
+                    break;
+                case 3:
+                    chckbxSeleccionMultiple3.click();
+                    break;
+                default:
+                    System.out.println("valor no procesable");
+            }
+        }
+    }
 }
