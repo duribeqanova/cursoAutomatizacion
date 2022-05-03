@@ -14,7 +14,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
@@ -40,13 +39,13 @@ public class CargaInformacion {
     @FindBy(xpath = "//select[@id = 'imObjectForm_1_6']")
         private WebElement campoLista;
 
-    @FindBy(id = "imObjectForm_1_7_0")
+    @FindBy(xpath = "//*[@id=\"imObjectForm_1_7_0\"]")
         private WebElement chckbxSeleccionMultiple1;
 
-    @FindBy(id = "imObjectForm_1_7_1")
+    @FindBy(xpath = "//*[@id=\"imObjectForm_1_7_1\"]")
         private WebElement chckbxSeleccionMultiple2;
 
-    @FindBy(id = "imObjectForm_1_7_2")
+    @FindBy(xpath = "//*[@id=\"imObjectForm_1_7_2\"]")
         private WebElement chckbxSeleccionMultiple3;
 
     @FindBy(id = "imObjectForm_1_8_0")
@@ -58,25 +57,23 @@ public class CargaInformacion {
     @FindBy(id = "imObjectForm_1_8_2")
      private WebElement rdbtnCombo3;
 
+    @FindBy(xpath = "//*[@id=\"imObjectForm_1_5_icon\"]")
+    private WebElement iconoCalendario;
+    @FindBy(xpath = "//*[@id=\"imDPleft\"]")
+    private WebElement btnRetrocederMes;
+    @FindBy(xpath = "//*[@id=\"imDPright\"]")
+    private WebElement btnAvanzarMes;
+
     @FindBy(xpath = "//*[@id=\"imObjectForm_1_submit\"]")
         private WebElement btnEnviar;
 
     @FindBy(xpath = "//*[@id=\"imObjectForm_1_buttonswrap\"]/input[2]")
         private WebElement btnReset;
 
-    @FindBy(xpath = "//*[@id=\"imObjectForm_1_5_icon\"]")
-       private WebElement iconoCalendario;
-
-    @FindBy(xpath = "//*[@id=\"imDPleft\"]")
-    private WebElement btnRetrocederMes;
-
-    @FindBy(xpath = "//*[@id=\"imDPright\"]")
-    private WebElement btnAvanzarMes;
-
     WebDriverWait webDriverWait;
-    public CargaInformacion(WebDriver webDriver){
-        PageFactory.initElements(webDriver,this);
-        this.webDriverWait = new WebDriverWait(webDriver,Duration.ofSeconds(30));
+    public CargaInformacion(){
+        PageFactory.initElements(DriverContext.getDriver(),this);
+        this.webDriverWait = new WebDriverWait(DriverContext.getDriver(), 30);
     }
 
     public String recuperarTitulo(){
@@ -101,28 +98,6 @@ public class CargaInformacion {
         campoFecha.sendKeys(fecha);
     }
 
-    public void seleccionarFechaCalendario(String fecha) throws ParseException{
-        iconoCalendario.click();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd");
-        String hoy = simpleDateFormat.format(new Date());
-        Date hoyDate = simpleDateFormat.parse(hoy);
-        Date fechaDate = simpleDateFormat.parse(fecha);
-        long diferencia = ChronoUnit.MONTHS.between(LocalDate.parse(hoy).withMonth(1),LocalDate.parse(fecha).withDayOfMonth(1));
-        int dia = Integer.parseInt(fecha.substring(fecha.length()-2));
-        int meses;
-            if(hoyDate.after(fechaDate)) {
-                meses = (int) (diferencia * -1);
-                for (int x = 0; x <= meses - 1; x++) {
-                    btnRetrocederMes.click();
-                }
-            }else{
-                  meses = (int) diferencia;
-                    for (int x =0; x <= meses -1; x++){
-                        btnAvanzarMes.click();
-            }
-                DriverContext.getDriver().findElement(By.xpath("//[@id = 'inDPcal']//td[text() = '"+dia+"']")).click();
-        }
-    }
     public void rellenarLista(String valor){
         Select select = new Select(campoLista);
         select.selectByVisibleText(valor);
@@ -162,6 +137,29 @@ public class CargaInformacion {
             default:
                 System.out.println("valor no procesable");
         }
+    }
+
+    public void seleccionarFechaCalendario(String fecha) throws ParseException {
+        iconoCalendario.click();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyy");
+        String hoy = simpleDateFormat.format(new Date());
+        Date hoyDate = simpleDateFormat.parse(hoy);
+        Date fechaDate = simpleDateFormat.parse(fecha);
+        long diferencia = ChronoUnit.MONTHS.between(LocalDate.parse(hoy).withDayOfMonth(1), LocalDate.parse(fecha).withDayOfMonth(1));
+        int dia = Integer.parseInt(fecha.substring(fecha.length()-2));
+        int meses;
+        if(hoyDate.after(fechaDate)) {
+            meses = (int) (diferencia * -1);
+            for (int x = 0; x <= meses - 1; x++) {
+                btnRetrocederMes.click();
+            }
+        }else{
+            meses = (int) diferencia;
+            for (int x =0; x <= meses -1; x++){
+                btnAvanzarMes.click();
+            }
+        }
+        DriverContext.getDriver().findElement(By.xpath("//div[@id = 'imDPcal']//td[text() = '" + dia + "']")).click();
     }
 
     public void clickBtnEnviar(){

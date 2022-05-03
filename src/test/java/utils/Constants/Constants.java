@@ -1,4 +1,4 @@
-package Utils.Constants;
+package utils.Constants;
 public abstract class Constants {
     public static final String AMBIENTE = "QA";
     public static final String AMBIENTE_URL = "http://172.16.98.195:9111/empresarios/";

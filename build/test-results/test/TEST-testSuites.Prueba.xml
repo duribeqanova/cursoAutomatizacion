@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="testSuites.Prueba" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-04-29T19:36:54" hostname="LAPTOP-SR88DSTE" time="2.758">
+<testsuite name="testSuites.Prueba" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-05-03T20:14:40" hostname="LAPTOP-SR88DSTE" time="3.133">
   <properties/>
-  <testcase name="pruebaLogin" classname="testSuites.Prueba" time="2.758"/>
+  <testcase name="pruebaLogin" classname="testSuites.Prueba" time="3.133"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,31 +1,36 @@
 package testSuites;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import testClasses.Logeo;
+import utils.Constants.Navegador;
+import utils.DriverContext;
+import utils.Reporte.PdfQaNovaReports;
 
-public class
-Prueba {
+import java.text.ParseException;
+
+public class Prueba {
     ChromeDriver webDriver;
     String url = "https://www.qanovagroup.com/piloto";
 
     @BeforeTest
     public void setUp(){
-        System.setProperty("webdriver.chrome.driver","driverNavegador/chromedriver.exe");
-        webDriver = new ChromeDriver();
-        webDriver.get(url);
+        DriverContext.setUp(Navegador.Chrome,url);
+        PdfQaNovaReports.createPDF();
     }
 
     @AfterTest
-    public void closeDriver(){
-        //webDriver.close();
+    public void closedDriver(){
+        DriverContext.closeDriver();
+        PdfQaNovaReports.closePDF();
     }
 
     @Test
-    public void pruebaLogin(){
-        Logeo logeo = new Logeo(webDriver);
+    public void pruebaLogin() throws ParseException {
+        Logeo logeo = new Logeo();
         logeo.CasoLogin1("nvivas","qanova");
     }
 }

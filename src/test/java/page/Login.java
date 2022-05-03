@@ -6,6 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.DriverContext;
+import utils.Reporte.EstadoPrueba;
+import utils.Reporte.PdfQaNovaReports;
 
 import java.time.Duration;
 
@@ -22,13 +25,14 @@ public class Login {
 
     WebDriverWait webDriverWait;
 
-    public Login(WebDriver webDriver){
-        PageFactory.initElements(webDriver,this);
-        this.webDriverWait = new WebDriverWait(webDriver,Duration.ofSeconds(30));
+    public Login(){
+        PageFactory.initElements(DriverContext.getDriver(),this);
+        this.webDriverWait = new WebDriverWait(DriverContext.getDriver(), 30);
     }
 
     public void ingresarUsuario(String usuario){
         webDriverWait.until(ExpectedConditions.visibilityOf(inputUsuario));
+        PdfQaNovaReports.addWebReportImage("Despliegue Login", "Se desplego correctamente", EstadoPrueba.PASSED,false );
         inputUsuario.sendKeys(usuario);
     }
 
@@ -38,5 +42,7 @@ public class Login {
 
     public void clickBtnIngresar(){
         btnIngresar.click();
+        PdfQaNovaReports.addWebReportImage("Datos Login", "Se ingreso usuario y contraseña", EstadoPrueba.PASSED,false);
     }
+
 }
