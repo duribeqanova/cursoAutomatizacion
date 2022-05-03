@@ -1,6 +1,9 @@
 package page;
 
+<<<<<<< HEAD
 import org.openqa.selenium.By;
+=======
+>>>>>>> 662de8108a7ade9a85f286395ca3f16035221d02
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,6 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+<<<<<<< HEAD
 import utils.DriverContext;
 
 import java.text.ParseException;
@@ -16,6 +20,10 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+=======
+
+import java.time.Duration;
+>>>>>>> 662de8108a7ade9a85f286395ca3f16035221d02
 
 
 public class CargaInformacion {
@@ -39,6 +47,7 @@ public class CargaInformacion {
     @FindBy(xpath = "//select[@id = 'imObjectForm_1_6']")
         private WebElement campoLista;
 
+<<<<<<< HEAD
     @FindBy(xpath = "//*[@id=\"imObjectForm_1_7_0\"]")
         private WebElement chckbxSeleccionMultiple1;
 
@@ -46,6 +55,15 @@ public class CargaInformacion {
         private WebElement chckbxSeleccionMultiple2;
 
     @FindBy(xpath = "//*[@id=\"imObjectForm_1_7_2\"]")
+=======
+    @FindBy(id = "imObjectForm_1_7_0")
+        private WebElement chckbxSeleccionMultiple1;
+
+    @FindBy(id = "imObjectForm_1_7_1")
+        private WebElement chckbxSeleccionMultiple2;
+
+    @FindBy(id = "imObjectForm_1_7_2")
+>>>>>>> 662de8108a7ade9a85f286395ca3f16035221d02
         private WebElement chckbxSeleccionMultiple3;
 
     @FindBy(id = "imObjectForm_1_8_0")
@@ -57,6 +75,7 @@ public class CargaInformacion {
     @FindBy(id = "imObjectForm_1_8_2")
      private WebElement rdbtnCombo3;
 
+<<<<<<< HEAD
     @FindBy(xpath = "//*[@id=\"imObjectForm_1_5_icon\"]")
     private WebElement iconoCalendario;
     @FindBy(xpath = "//*[@id=\"imDPleft\"]")
@@ -64,6 +83,8 @@ public class CargaInformacion {
     @FindBy(xpath = "//*[@id=\"imDPright\"]")
     private WebElement btnAvanzarMes;
 
+=======
+>>>>>>> 662de8108a7ade9a85f286395ca3f16035221d02
     @FindBy(xpath = "//*[@id=\"imObjectForm_1_submit\"]")
         private WebElement btnEnviar;
 
@@ -71,9 +92,15 @@ public class CargaInformacion {
         private WebElement btnReset;
 
     WebDriverWait webDriverWait;
+<<<<<<< HEAD
     public CargaInformacion(){
         PageFactory.initElements(DriverContext.getDriver(),this);
         this.webDriverWait = new WebDriverWait(DriverContext.getDriver(), 30);
+=======
+    public CargaInformacion(WebDriver webDriver){
+        PageFactory.initElements(webDriver,this);
+        this.webDriverWait = new WebDriverWait(webDriver,Duration.ofSeconds(30));
+>>>>>>> 662de8108a7ade9a85f286395ca3f16035221d02
     }
 
     public String recuperarTitulo(){
@@ -139,6 +166,7 @@ public class CargaInformacion {
         }
     }
 
+<<<<<<< HEAD
     public void seleccionarFechaCalendario(String fecha) throws ParseException {
         iconoCalendario.click();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyy");
@@ -162,6 +190,8 @@ public class CargaInformacion {
         DriverContext.getDriver().findElement(By.xpath("//div[@id = 'imDPcal']//td[text() = '" + dia + "']")).click();
     }
 
+=======
+>>>>>>> 662de8108a7ade9a85f286395ca3f16035221d02
     public void clickBtnEnviar(){
         btnEnviar.click();
     }
