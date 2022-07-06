@@ -11,8 +11,8 @@ repositories {
 
 dependencies {
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
-    implementation group: 'com.itextpdf', name: 'itextpdf', version: '5.5.13.3'
     implementation group: 'net.coobird', name: 'thumbnailator', version: '0.4.17'
+    implementation group: 'com.itextpdf', name: 'itextpdf', version: '5.5.13.3'
     testImplementation group: 'org.testng', name: 'testng', version: '7.5'
 }
 
